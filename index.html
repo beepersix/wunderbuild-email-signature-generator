@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wunderbuild Email Signature Generator</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>Wunderbuild Email Signature Generator</h1>
+    <p class="subhead">
+      Fill in your details → click <strong>Copy for Gmail</strong> → paste into Gmail Settings.
+    </p>
+
+    <div class="steps">
+      <div class="step"><span class="step-num">1</span><span class="step-text">Fill in your details (name + email required)</span></div>
+      <div class="step"><span class="step-num">2</span><span class="step-text">Click <strong>Copy for Gmail</strong></span></div>
+      <div class="step"><span class="step-num">3</span><span class="step-text">Paste into Gmail → Settings → Signature</span></div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT: FORM -->
+    <section class="panel">
+      <h2>Your details</h2>
+
+      <form id="sig-form" novalidate>
+        <!-- REQUIRED -->
+        <fieldset class="fieldset">
+          <legend>Required</legend>
+
+          <label class="label" for="fullName">
+            Full name <span class="req">required</span>
+          </label>
+          <input id="fullName" name="fullName" type="text" placeholder="e.g., Alex Nguyen" autocomplete="name" />
+          <p class="hint">This appears as the bold name at the top of the signature.</p>
+          <p class="error" id="fullNameError" aria-live="polite"></p>
+
+          <label class="label" for="email">
+            Email address <span class="req">required</span>
+          </label>
+          <input id="email" name="email" type="email" placeholder="e.g., alex@wunderbuild.com" autocomplete="email" />
+          <p class="hint">This becomes a clickable email link (mailto:).</p>
+          <p class="error" id="emailError" aria-live="polite"></p>
+        </fieldset>
+
+        <!-- SIGN-OFF -->
+        <fieldset class="fieldset">
+          <legend>Sign-off (appears above your signature)</legend>
+
+          <label class="label" for="signoff">
+            Sign-off line (optional)
+          </label>
+          <input id="signoff" name="signoff" type="text" value="Cheers," />
+          <p class="hint">This will appear above the signature, with a large fixed gap underneath.</p>
+        </fieldset>
+
+        <!-- ROLE -->
+        <fieldset class="fieldset">
+          <legend>Role</legend>
+
+          <label class="label" for="jobTitle">Job title (optional)</label>
+          <input id="jobTitle" name="jobTitle" type="text" placeholder="e.g., Estimator" />
+          <p class="hint">If left blank, the job title line disappears.</p>
+        </fieldset>
+
+        <!-- CONTACT -->
+        <fieldset class="fieldset">
+          <legend>Contact details</legend>
+
+          <label class="label" for="mobile">Mobile number (optional)</label>
+          <input id="mobile" name="mobile" type="tel" placeholder="e.g., +61 4xx xxx xxx" />
+          <p class="hint">This becomes a click-to-call link (tel:).</p>
+
+          <div class="row-2">
+            <div>
+              <label class="label" for="landlineText">Landline (text) (optional)</label>
+              <input id="landlineText" name="landlineText" type="text" />
+              <p class="hint">Pre-filled. Clear it to remove the landline row.</p>
+            </div>
+            <div>
+              <label class="label" for="landlineHref">Landline link (tel:) (optional)</label>
+              <input id="landlineHref" name="landlineHref" type="text" />
+              <p class="hint">Pre-filled. Usually: digits only.</p>
+            </div>
+          </div>
+
+          <div class="row-2">
+            <div>
+              <label class="label" for="websiteText">Website (text) (optional)</label>
+              <input id="websiteText" name="websiteText" type="text" />
+            </div>
+            <div>
+              <label class="label" for="websiteHref">Website link (optional)</label>
+              <input id="websiteHref" name="websiteHref" type="url" />
+            </div>
+          </div>
+          <p class="hint">Pre-filled. Leave as-is unless you’ve been told to change it.</p>
+
+          <div class="row-2">
+            <div>
+              <label class="label" for="addressText">Office address (text) (optional)</label>
+              <input id="addressText" name="addressText" type="text" />
+            </div>
+            <div>
+              <label class="label" for="addressHref">Office address link (Google Maps URL) (optional)</label>
+              <input id="addressHref" name="addressHref" type="url" />
+            </div>
+          </div>
+          <p class="hint">Pre-filled. If you clear either field, the address row disappears.</p>
+        </fieldset>
+
+        <!-- CTA BUTTONS -->
+        <fieldset class="fieldset">
+          <legend>Call-to-action buttons</legend>
+
+          <div class="row-2">
+            <div>
+              <label class="label" for="cta1Text">Button 1 label (optional)</label>
+              <input id="cta1Text" name="cta1Text" type="text" />
+            </div>
+            <div>
+              <label class="label" for="cta1Href">Button 1 link (optional)</label>
+              <input id="cta1Href" name="cta1Href" type="url" />
+            </div>
+          </div>
+
+          <div class="row-2">
+            <div>
+              <label class="label" for="cta2Text">Button 2 label (optional)</label>
+              <input id="cta2Text" name="cta2Text" type="text" />
+            </div>
+            <div>
+              <label class="label" for="cta2Href">Button 2 link (optional)</label>
+              <input id="cta2Href" name="cta2Href" type="url" />
+            </div>
+          </div>
+
+          <p class="hint">
+            If a button label OR link is blank, that button disappears.
+          </p>
+        </fieldset>
+
+        <!-- SOCIAL LINKS -->
+        <fieldset class="fieldset">
+          <legend>Social links (optional)</legend>
+
+          <label class="label" for="facebookHref">Facebook URL (pre-filled)</label>
+          <input id="facebookHref" name="facebookHref" type="url" />
+
+          <label class="label" for="instagramHref">Instagram URL (pre-filled)</label>
+          <input id="instagramHref" name="instagramHref" type="url" />
+
+          <label class="label" for="linkedinHref">LinkedIn URL (pre-filled)</label>
+          <input id="linkedinHref" name="linkedinHref" type="url" />
+
+          <label class="label" for="xHref">X URL (pre-filled)</label>
+          <input id="xHref" name="xHref" type="url" />
+
+          <label class="label" for="youtubeHref">YouTube URL (pre-filled)</label>
+          <input id="youtubeHref" name="youtubeHref" type="url" />
+
+          <p class="hint">Clear a URL to remove that icon from the signature.</p>
+        </fieldset>
+
+        <!-- ACTIONS -->
+        <div class="actions">
+          <button id="copyBtn" type="button" class="btn-primary" disabled>
+            ✅ Copy for Gmail
+          </button>
+          <button id="resetBtn" type="button" class="btn-secondary">
+            Reset to Wunderbuild defaults
+          </button>
+        </div>
+
+        <p id="copyStatus" class="status" aria-live="polite"></p>
+
+        <div class="manual-copy">
+          <h3>Manual copy (only if the button fails)</h3>
+          <ol>
+            <li>Click inside the preview.</li>
+            <li>Press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + <kbd>A</kbd> (select all).</li>
+            <li>Press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + <kbd>C</kbd> (copy).</li>
+          </ol>
+        </div>
+      </form>
+    </section>
+
+    <!-- RIGHT: PREVIEW -->
+    <section class="panel preview-panel">
+      <h2>Live preview</h2>
+      <p class="hint">This is what gets copied into Gmail.</p>
+
+      <div class="preview-shell">
+        <div id="signaturePreview" class="signature-preview" aria-label="Email signature preview"></div>
+      </div>
+
+      <section id="instructions" class="instructions">
+        <div class="instructions-inner">
+  <h2>How to set up your Wunderbuild email signature (Gmail)</h2>
+
+  <p><strong>What this page does:</strong> You type your details once, this page builds your Wunderbuild signature for you, and you paste it into Gmail.</p>
+
+  <div class="callout">
+    <p><strong>Important:</strong> Do this on a computer (laptop/desktop), not on your phone. Gmail on desktop is where the full signature gets set properly.</p>
+  </div>
+
+  <div class="callout">
+    <p><strong>Chrome note:</strong> Gmail in Chrome sometimes forces link underlines when you paste signatures. We harden the HTML, but Gmail can still override styling during paste. If you see underlines in the Gmail editor, send yourself a test email and check the <strong>received</strong> email too.</p>
+  </div>
+
+  <h3>Part A — Build your signature on this page</h3>
+  <ol>
+    <li>
+      <p><strong>Fill in the required fields:</strong> Full name and Email address.</p>
+      <p>If you leave either blank, the <strong>Copy for Gmail</strong> button stays disabled.</p>
+    </li>
+    <li>
+      <p><strong>Optional fields:</strong> Fill in anything else you want included (job title, mobile, CTAs, social links).</p>
+      <ul>
+        <li>If you <strong>clear</strong> a field completely, that item will <strong>disappear</strong> from your signature (no empty lines).</li>
+        <li>Some fields are already filled with Wunderbuild defaults (landline, website, office address, social links). Only change these if you’ve been told to.</li>
+      </ul>
+    </li>
+    <li>
+      <p><strong>Check the Live Preview</strong> on the right. That’s what gets copied into Gmail.</p>
+    </li>
+    <li>
+      <p><strong>Click: ✅ Copy for Gmail</strong></p>
+      <p>You should see a “Copied” message. If copy fails, follow the Manual copy steps shown under the button.</p>
+    </li>
+  </ol>
+
+  <h3>Part B — Paste your signature into Gmail (computer)</h3>
+  <ol>
+    <li><p><strong>Open Gmail</strong> in your browser.</p></li>
+    <li>
+      <p><strong>Open Settings:</strong></p>
+      <ul>
+        <li>Top right → click the <strong>gear icon (Settings)</strong></li>
+        <li>Click <strong>See all settings</strong></li>
+      </ul>
+    </li>
+    <li>
+      <p><strong>Find the Signature section:</strong></p>
+      <ul>
+        <li>Stay on the <strong>General</strong> tab</li>
+        <li>Scroll down to <strong>Signature</strong></li>
+      </ul>
+    </li>
+    <li>
+      <p><strong>Paste:</strong> click inside the signature box → paste with <strong>Ctrl+V</strong> (Windows) or <strong>Cmd+V</strong> (Mac).</p>
+      <p><strong>Do not</strong> use “paste without formatting”.</p>
+    </li>
+    <li><p><strong>Save:</strong> scroll to the bottom → click <strong>Save Changes</strong>.</p></li>
+  </ol>
+
+  <h3>Please don’t do these things 🙏</h3>
+  <ul>
+    <li>Don’t type the signature manually.</li>
+    <li>Don’t delete random icons/buttons in Gmail. If you want something removed, clear the field here and copy again.</li>
+    <li>Don’t try to “fix” fonts or spacing inside Gmail after pasting.</li>
+  </ul>
+</div>
+      </section>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
